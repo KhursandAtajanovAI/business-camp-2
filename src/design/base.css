@@ -1,0 +1,37 @@
+/* Page-wide defaults built on the tokens. */
+
+/* 1rem becomes 18px, so no text on the site is smaller than 18px,
+   and a person who enlarges text in the browser still gets a bigger site. */
+html {
+  font-size: 112.5%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* A focus ring you can see, in a calm color. */
+:focus-visible {
+  outline: 3px solid var(--color-lavender-deep);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Slow, soft changes everywhere. */
+a, button, summary, input, textarea {
+  transition: background-color 300ms var(--ease-gentle), border-color 300ms var(--ease-gentle),
+    box-shadow 300ms var(--ease-gentle);
+}
+
+/* People who ask their device for less motion get a still page. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
