@@ -6,6 +6,7 @@ import type { ParsedDocument } from "@/contracts";
 import { IntakeError } from "@/intake";
 import { Button } from "@/components/button/button";
 import { Card } from "@/components/card/card";
+import { WithHints } from "@/components/hint/with-hints";
 import { NextStep } from "@/components/layout/next-step";
 import { Waiting } from "@/components/states/quiet-state";
 import { addPaper, checkPapers, readPaper } from "../_pipeline/check-papers";
@@ -60,15 +61,15 @@ export function UploadScreen() {
       {trouble && (
         <Card tone="notice" className="flex flex-col gap-1">
           <p role="status" className="font-bold">{trouble.message}</p>
-          <p>{trouble.nextStep}</p>
+          <p><WithHints text={trouble.nextStep} /></p>
         </Card>
       )}
       {shown === "choose" && (
         <>
-          <p className="text-xl text-ink-soft">{upload.lead}</p>
+          <p className="text-xl text-ink-soft"><WithHints text={upload.lead} /></p>
           <ChooseStep onFile={read} onPaste={() => setStep("paste")} />
           <Card tone="hint" className="flex flex-col gap-2">
-            <p><span className="font-bold">{upload.whyTitle}. </span>{upload.whyText}</p>
+            <p><span className="font-bold">{upload.whyTitle}. </span><WithHints text={upload.whyText} /></p>
             <p>{upload.privacy}</p>
           </Card>
         </>
