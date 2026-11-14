@@ -25,6 +25,7 @@ export const results = {
   lessonTitle: "A minute to understand your bill",
   lessonText: "Short lessons explain bills using your own papers as the example.",
   lessonLink: "Open the short lessons",
+  shareLink: "Share a summary with no personal details",
   healthLabel: "Bill health",
   healthNote: (score: number) => `${score} out of 100. The closer to 100, the less there is to ask about.`,
   papersRead: (papers: string) => `We read ${papers}.`,
