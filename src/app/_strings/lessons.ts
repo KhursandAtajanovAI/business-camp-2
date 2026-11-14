@@ -1,0 +1,26 @@
+// Words around the lessons. The lessons themselves live in content/lessons.
+export const lessonWords = {
+  title: "Short lessons",
+  lead: "One minute each, using your own papers as the example. Read one now or keep them for a quiet moment.",
+  sampleLead: "You have not checked a paper yet, so these lessons use our made-up example for now.",
+  minute: "About a minute",
+  read: "Read",
+  readAgain: "Read again",
+  done: "Read",
+  progress: (read: number, total: number) => `${read} of ${total} read`,
+  sproutLabel: (read: number, total: number) => `A sprout that grows as lessons are read: ${read} of ${total}`,
+  takeaway: "To remember",
+  finish: "Done, back to the lessons",
+  allRead: "You have read them all. That is real knowledge about your own bills.",
+  next: "Check a paper",
+  whose: { own: "your", sample: "the sample" },
+  codeNote: (code: string) => `The code ${code} tells the insurance which service this is.`,
+  noCodeNote: "This line has no billing code printed next to it.",
+  totalMatch: "They match, which is a good sign.",
+  totalGap: (gap: string) => `The difference is ${gap}, and it is fair to ask what it is for.`,
+  eobYes: (whose: string, provider: string) => `Among ${whose} papers there is an EOB from ${provider}. It is not a bill, so nothing is paid from it.`,
+  eobNo: (whose: string) => `So far ${whose} papers do not include an EOB. It is not a bill, but when it arrives, add it and we will compare it with the bill.`,
+  findingYes: (whose: string, title: string, amount: string, sure: string) =>
+    `In ${whose} check we noticed this: ${title}. The amount in question is ${amount}, and we marked it "${sure}".`,
+  findingNo: (whose: string) => `In ${whose} check we did not notice anything, so the money in question is $0.00.`,
+};
