@@ -11,7 +11,7 @@ describe("formatting for people in the United States", () => {
     expect(formatDate("")).toBe("");
   });
   it("counts things in plain English", () => {
-    expect(countOf(1, "paper", "papers")).toBe("1 paper");
-    expect(countOf(3, "paper", "papers")).toBe("3 papers");
+    expect(countOf(1, ["paper", "papers"])).toBe("1 paper");
+    expect(countOf(3, ["paper", "papers"])).toBe("3 papers");
   });
 });

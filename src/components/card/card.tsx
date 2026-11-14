@@ -11,5 +11,5 @@ const tones: Record<CardTone, string> = {
 };
 
 export function Card({ children, tone = "plain", className = "" }: { children: ReactNode; tone?: CardTone; className?: string }) {
-  return <section className={`animate-settle rounded-soft p-5 shadow-soft sm:p-7 ${tones[tone]} ${className}`}>{children}</section>;
+  return <section className={`animate-settle rounded-soft p-5 shadow-soft [overflow-wrap:anywhere] sm:p-7 ${tones[tone]} ${className}`}>{children}</section>;
 }

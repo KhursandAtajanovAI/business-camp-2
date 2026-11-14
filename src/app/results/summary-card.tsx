@@ -3,6 +3,7 @@ import { Card } from "@/components/card/card";
 import { SampleTag } from "@/components/card/sample-tag";
 import { WithHints } from "@/components/hint/with-hints";
 import { countOf, formatMoney } from "../_format/format";
+import { common } from "../_strings/common";
 import { results } from "../_strings/results";
 import { HealthNote } from "./health-note";
 
@@ -24,7 +25,7 @@ export function SummaryCard({ analysis }: { analysis: Analysis }) {
         <p><WithHints text={results.calmText} /></p>
       )}
       <HealthNote score={analysis.healthScore} />
-      <p className="text-ink-soft">{results.papersRead(countOf(analysis.documents.length, "paper", "papers"))}</p>
+      <p className="text-ink-soft">{results.papersRead(countOf(analysis.documents.length, common.papers))}</p>
     </Card>
   );
 }
