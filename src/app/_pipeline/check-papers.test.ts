@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { addPaper, checkPapers, checkSample } from "./check-papers";
+import { demoSets } from "@content/demo-documents";
+import { addPaper, checkPapers, checkSample, readPaper } from "./check-papers";
 
 describe("the road a paper takes", () => {
   it("runs the sample through the same steps as a real paper and marks it as a sample", async () => {
     const analysis = await checkSample();
-    expect(analysis.documents).toHaveLength(1);
-    expect(analysis.documents[0].isDemo).toBe(true);
+    expect(analysis.documents).toHaveLength(demoSets[0].papers.length);
+    expect(analysis.documents.every((document) => document.isDemo)).toBe(true);
     expect(analysis.findings.length).toBeGreaterThan(0);
   });
 
@@ -16,10 +17,8 @@ describe("the road a paper takes", () => {
   });
 
   it("says nothing when there is nothing to ask about", async () => {
-    const calm = (await checkSample()).documents[0];
-    const lines = calm.lines.filter((line, index, all) => all.findIndex((other) => other.description === line.description) === index);
-    const total = lines.reduce((sum, line) => sum + line.amountCents, 0);
-    expect(checkPapers([{ ...calm, lines, totalCents: total }]).findings).toEqual([]);
+    const calm = await readPaper(demoSets[4].papers[5].text, true); // the pediatrician bill has no planted mistake
+    expect(checkPapers([calm]).findings).toEqual([]);
   });
 
   it("does not double a paper that is added twice", async () => {

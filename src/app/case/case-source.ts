@@ -1,7 +1,6 @@
 // Where the case screen gets its case from. The storage functions are Khursand's (src/case-file).
 import type { Analysis, CaseFile } from "@/contracts";
 import { loadCase, saveCase } from "@/case-file";
-import { readStored, writeStored } from "../_session/storage";
 
 export function startCase(analysis: Analysis, chosenIds: string[] | null): CaseFile {
   return {
@@ -22,16 +21,13 @@ export function refreshCase(kept: CaseFile, analysis: Analysis, chosenIds: strin
 }
 
 export function openCase(analysis: Analysis | null, chosenIds: string[] | null): CaseFile | null {
-  // STUB: src/case-file keeps the case in memory only until package H9, so a copy also
-  // lives in the browser here. Remove the copy when loadCase survives a page reload.
-  const kept = loadCase() ?? readStored<CaseFile>("case");
+  const kept = loadCase(); // src/case-file keeps the case in the browser, so it survives a reload
   if (!analysis) return kept;
   return kept ? refreshCase(kept, analysis, chosenIds) : startCase(analysis, chosenIds);
 }
 
 export function keepCase(caseFile: CaseFile): void {
   saveCase(caseFile);
-  writeStored("case", caseFile); // STUB: see openCase
 }
 
 export function caseProgress(caseFile: CaseFile) {
