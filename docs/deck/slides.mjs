@@ -30,7 +30,7 @@ export const slides = [
     lead: "A real product, not a chat wrapper.",
     bullets: [
       "9 rules written in code, each with a public source and a confidence level: sure, likely, worth asking.",
-      "238 automated tests. On five sample sets the engine finds exactly the planted mistakes.",
+      "293 automated tests. On five sample sets the engine finds exactly the planted mistakes.",
       "Sample bills run through the same pipeline as real uploads.",
       "Names, addresses and policy numbers are hidden before any text reaches a model.",
       "We say \"money in question\", never \"we will get your money back\". No medical or legal advice.",
