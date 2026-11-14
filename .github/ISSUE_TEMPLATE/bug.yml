@@ -1,0 +1,18 @@
+name: Bug
+description: Сообщить об ошибке (уязвимости — только через Security → Report a vulnerability)
+labels: ["type:fix"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Что произошло
+      description: Ожидание и факт
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+  - type: markdown
+    attributes:
+      value: "Не вставляйте токены, пароли и персональные данные."

@@ -1,0 +1,58 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Secrets and credentials — NEVER commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets/
+credentials*.json
+service-account*.json
+id_rsa*
+id_ed25519*
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+vendor/
+
+# Build output
+dist/
+build/
+out/
+.next/
+coverage/
+
+# Logs
+*.log
+logs/
+
+# Database dumps and local data
+*.sql
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+
+# Local agent worktrees / settings
+.claude/settings.local.json
+.worktrees/

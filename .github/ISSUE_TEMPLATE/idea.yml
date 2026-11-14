@@ -1,0 +1,9 @@
+name: Idea
+description: Предложить идею
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Идея и зачем она нужна
+    validations:
+      required: true
