@@ -1,3 +1,4 @@
+import { Button } from "@/components/button/button";
 import { Card } from "@/components/card/card";
 import { NextStep } from "@/components/layout/next-step";
 import { PageShell } from "@/components/layout/page-shell";
@@ -30,6 +31,7 @@ export function HomeScreen() {
       </Card>
       <NextStep note={`${home.trySampleNote} ${home.noAccount}`}>
         <TrySample />
+        <Button tone="second" href="/upload">{home.ownBill}</Button>
         
       </NextStep>
     </PageShell>

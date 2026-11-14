@@ -1,5 +1,5 @@
 // What the person did so far, kept in the browser. No account, nothing on a server.
-export type StoreKey = "analysis" | "chosen" | "resume" | "case" | "lessons";
+export type StoreKey = "papers" | "analysis" | "chosen" | "resume" | "case" | "lessons";
 
 const name = (key: StoreKey) => `bc2.${key}`;
 
