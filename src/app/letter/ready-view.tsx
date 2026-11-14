@@ -34,6 +34,7 @@ export function ReadyView({ pack }: { pack: LetterPackage }) {
       )}
       <NextStep>
         <Button href={pack.letterPdfUrl} download={letter.fileName}>{letter.download}</Button>
+        <Button tone="second" href="/case">{letter.caseFile}</Button>
         <Button tone="quiet" href="/results">{letter.changeChoice}</Button>
       </NextStep>
     </>
