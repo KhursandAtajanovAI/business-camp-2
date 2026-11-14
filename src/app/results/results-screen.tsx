@@ -59,6 +59,7 @@ export function ResultsScreen() {
         <h2 className="text-xl font-extrabold">{results.lessonTitle}</h2>
         <p>{results.lessonText}</p>
         <Button tone="quiet" href="/lessons">{results.lessonLink}</Button>
+        <Button tone="quiet" href="/share">{results.shareLink}</Button>
       </Card>
       <p role="status" className="font-bold">
         {chosenFindings.length > 0 ? results.chosenSummary(chosenFindings.length, formatMoney(chosenCents)) : results.noneChosen}
