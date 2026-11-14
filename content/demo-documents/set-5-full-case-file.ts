@@ -71,6 +71,6 @@ export const set5: DemoSet = {
   planted: [
     { ruleId: "balance-above-eob", note: "The hospital bill asks for $2,950.00 but the EOB says the family owes $2,200.00.", atStakeCents: 75_000 },
     { ruleId: "once-per-birth", note: "The birth package (59400) is billed with quantity 2 for one birth.", atStakeCents: 480_000 },
-    { ruleId: "price-above-reference", note: "A blood draw (36415) is billed at $145.00, far above the public reference price.", atStakeCents: 5_670 },
+    { ruleId: "price-above-reference", note: "A blood draw (36415) is billed at $145.00, far above the public reference price.", atStakeCents: 5_160 },
   ],
 };

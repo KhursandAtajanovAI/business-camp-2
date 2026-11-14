@@ -1,0 +1,52 @@
+/* The one place for colors, fonts, corners, shadows and motion.
+   Screens never write a color by hand: they use the classes these tokens create
+   (bg-cream, text-ink, rounded-soft, shadow-soft, animate-breathe ...). */
+@theme {
+  /* Warm base */
+  --color-cream: #fff8f2; /* page background */
+  --color-surface: #ffffff; /* cards */
+  --color-ink: #3b3340; /* soft plum-charcoal text instead of black */
+  --color-ink-soft: #5e5566; /* quieter text, still AA on cream */
+
+  /* Coral: the main button. "deep" is the fill that keeps white text readable. */
+  --color-coral: #d9715f;
+  --color-coral-deep: #b4513f;
+  --color-coral-soft: #fbe6e1;
+
+  /* Sage: "all good", the sprout */
+  --color-sage: #7fa58e;
+  --color-sage-deep: #3f6b52;
+  --color-sage-soft: #e3efe7;
+
+  /* Lavender: hints */
+  --color-lavender: #b9a7d6;
+  --color-lavender-deep: #5b4a80;
+  --color-lavender-soft: #efe9f7;
+
+  /* Amber: findings. Used instead of red, always. */
+  --color-amber: #e8b65c;
+  --color-amber-deep: #7a5410;
+  --color-amber-soft: #fbefd5;
+
+  --radius-soft: 20px;
+  --shadow-soft: 0 8px 30px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  --font-sans: var(--font-nunito), ui-rounded, "Segoe UI", system-ui, sans-serif;
+
+  --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-breathe: breathe 10s var(--ease-gentle) infinite;
+  --animate-settle: settle 700ms var(--ease-gentle) both;
+  --animate-grow: grow 900ms var(--ease-gentle) both;
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.55; }
+    50% { transform: scale(1.06); opacity: 0.8; }
+  }
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes grow {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+}
