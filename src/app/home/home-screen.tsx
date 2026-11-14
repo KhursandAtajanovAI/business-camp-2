@@ -18,6 +18,10 @@ export function HomeScreen() {
         <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl">{home.title}</h1>
         <p className="text-xl text-ink-soft"><WithHints text={home.lead} /></p>
       </section>
+      <NextStep note={`${home.trySampleNote} ${home.noAccount}`}>
+        <TrySample />
+        <Button tone="second" href="/upload">{home.ownBill}</Button>
+      </NextStep>
       <HowItWorks />
       <Card tone="calm" className="flex flex-col gap-2">
         <h2 className="text-xl font-extrabold">{home.priceTitle}</h2>
@@ -30,11 +34,6 @@ export function HomeScreen() {
           <p className="mt-1">{home.privacyText}</p>
         </div>
       </Card>
-      <NextStep note={`${home.trySampleNote} ${home.noAccount}`}>
-        <TrySample />
-        <Button tone="second" href="/upload">{home.ownBill}</Button>
-        
-      </NextStep>
     </PageShell>
   );
 }
