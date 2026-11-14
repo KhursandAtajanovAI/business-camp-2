@@ -50,17 +50,17 @@ Stages: 0 skeleton, 1 core, 2 full path (all P0), 3 retention (P1), 4 growth (P2
 
 | ID | Package | Folder | Stage | Who | Status |
 |----|---------|--------|-------|-----|--------|
-| D1 | Design system | `src/design` | 1 | Dias | not started |
-| D2 | Home page and "try a sample" | `src/app/home` | 1 | Dias | not started |
-| D3 | Upload screen | `src/app/upload` | 1 | Dias | not started |
-| D4 | Results screen | `src/app/results` | 2 | Dias | not started |
-| D5 | Hints and glossary | `src/components/hint` | 2 | Dias | not started |
-| D6 | Letter and call-script screen | `src/app/letter` | 2 | Dias | not started |
-| D7 | Pricing and payment screen | `src/app/pricing` | 2 | Dias | not started |
-| D8 | Mobile version, empty and error states | `src/components`, `src/app` | 2 | Dias | not started |
-| D9 | Case file screen | `src/app/case` | 3 | Dias | not started |
-| D10 | Micro-lessons | `content/lessons`, `src/app/lessons` | 3 | Dias | not started |
-| D11 | Detective game | `src/app/game` | 4 | Dias | not started |
-| D12 | Share a report without personal data | `src/app/share` | 4 | Dias | not started |
-| D13 | Screenshots for the deck | `docs/screens` | 4 | Dias | not started |
-| D14 | Check of English texts and disclaimers | `src`, `content` | 4 | Dias | not started |
+| D1 | Design system | `src/design` | 1 | Dias | in progress |
+| D2 | Home page and "try a sample" | `src/app/home` | 1 | Dias | in progress |
+| D3 | Upload screen | `src/app/upload` | 1 | Dias | in progress |
+| D4 | Results screen | `src/app/results` | 2 | Dias | in progress |
+| D5 | Hints and glossary | `src/components/hint` | 2 | Dias | in progress |
+| D6 | Letter and call-script screen | `src/app/letter` | 2 | Dias | in progress |
+| D7 | Pricing and payment screen | `src/app/pricing` | 2 | Dias | in progress |
+| D8 | Mobile version, empty and error states | `src/components`, `src/app` | 2 | Dias | in progress |
+| D9 | Case file screen | `src/app/case` | 3 | Dias | in progress |
+| D10 | Micro-lessons | `content/lessons`, `src/app/lessons` | 3 | Dias | in progress |
+| D11 | Detective game | `src/app/game` | 4 | Dias | in progress |
+| D12 | Share a report without personal data | `src/app/share` | 4 | Dias | in progress |
+| D13 | Screenshots for the deck | `docs/screens` | 4 | Dias | in progress |
+| D14 | Check of English texts and disclaimers | `src`, `content` | 4 | Dias | in progress |
