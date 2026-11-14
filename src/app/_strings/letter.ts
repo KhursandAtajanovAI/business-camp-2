@@ -21,6 +21,7 @@ export const letter = {
     "Download the letter and read it through once.",
     "Send it to the billing office and keep a copy.",
     "Or call first, using the script below, and write down what you hear.",
+    "Note the day in your case file, so the answer does not slip away.",
   ],
   escalationTitle: "If the answer is no",
   honest: "The letter asks for a review. It does not promise that the bill will change.",
