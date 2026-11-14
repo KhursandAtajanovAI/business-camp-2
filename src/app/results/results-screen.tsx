@@ -57,8 +57,8 @@ export function ResultsScreen() {
       <p role="status" className="font-bold">
         {chosenFindings.length > 0 ? results.chosenSummary(chosenFindings.length, formatMoney(chosenCents)) : results.noneChosen}
       </p>
-      <NextStep>
-        {/* LETTER-BUTTON */}
+      <NextStep note={results.nextNote}>
+        {chosenFindings.length > 0 && <Button href="/letter">{results.next}</Button>}
         <Button tone="second" href="/upload">{results.addPaper}</Button>
       </NextStep>
     </>
