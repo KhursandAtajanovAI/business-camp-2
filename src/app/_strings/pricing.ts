@@ -1,0 +1,22 @@
+export const pricing = {
+  title: "Simple, honest pricing",
+  lead: "Take your time. The check is free and stays free, whatever you decide.",
+  freeName: "The check",
+  freePrice: "Free",
+  freeItems: ["Add as many papers as you like", "See everything worth asking about", "See the money in question"],
+  paidIncludes: ["A ready letter for the billing office as a PDF", "A call script for the phone", "Your case file with gentle reminders"],
+  once: "once",
+  monthly: "a month",
+  choose: (name: string, price: string) => `Choose ${name} for ${price}`,
+  opening: "Opening the payment page",
+  honestTitle: "Good to know",
+  honest: [
+    "You pay for the letter and the help, not for a result. We cannot promise that a bill will change.",
+    "The monthly plan can be cancelled at any time.",
+    "This is a demo build of the site. Payments run in test mode and no real money moves.",
+  ],
+  paidTitle: "You are all set",
+  paidText: (name: string) => `Your ${name} plan is active on this device.`,
+  paidAction: "Continue",
+  notNow: "Not now, back to my results",
+};

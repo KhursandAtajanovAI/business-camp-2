@@ -1,7 +1,35 @@
-// STUB (stage 0): returns the sample letter package. The real letters arrive in stage 2.
-import type { Analysis, Finding, LetterPackage } from "@/contracts";
-import { sampleLetterPackage } from "@/contracts/stubs";
+// The only file other modules import from letters.
+import type { Analysis, CaseFile, Finding, LetterPackage } from "@/contracts";
+import { explainFinding } from "@/explain";
+import { buildAppealContent } from "./appeal/build-appeal";
+import { buildCallScript } from "./call-script/build-call-script";
+import { buildEscalationSteps } from "./escalation/build-escalation";
+import { buildLetterContent } from "./letter/letter-content";
+import { renderLettersPdf } from "./letter/letter-pdf";
+import { pdfToDataUrl } from "./letter/pdf-url";
+import { todayIso } from "./shared/format";
+import { groupFindings } from "./shared/group-findings";
 
-export async function buildLetterPackage(_analysis: Analysis, _selected: Finding[]): Promise<LetterPackage> {
-  return sampleLetterPackage;
+export { LetterError } from "./shared/group-findings";
+
+// Builds everything a parent needs to act on the chosen findings:
+// a claim letter as a downloadable PDF link, a call script,
+// and the next steps in order if the answer is no.
+// Throws a LetterError with a kind message when nothing is chosen.
+export async function buildLetterPackage(analysis: Analysis, selected: Finding[]): Promise<LetterPackage> {
+  const groups = groupFindings(analysis, selected);
+  const options = { today: todayIso(), explain: explainFinding };
+  const pdf = await renderLettersPdf(groups.map((group) => buildLetterContent(group, options)));
+  return {
+    letterPdfUrl: pdfToDataUrl(pdf),
+    callScript: buildCallScript(groups),
+    escalationSteps: buildEscalationSteps(analysis, selected),
+  };
+}
+
+// Builds an appeal letter (PDF link) for the insurance plan from the family case file.
+// Throws a LetterError with a kind message when the case has no unpaid service on an EOB.
+export async function buildAppealLetter(caseFile: CaseFile): Promise<{ letterPdfUrl: string }> {
+  const pdf = await renderLettersPdf(buildAppealContent(caseFile, todayIso()));
+  return { letterPdfUrl: pdfToDataUrl(pdf) };
 }
