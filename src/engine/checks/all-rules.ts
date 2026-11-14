@@ -3,6 +3,7 @@ import { duplicateLine } from "../rules/duplicate-line";
 import { birthPackage } from "../rules/birth-package";
 import { balanceAboveEob } from "../matching/balance-above-eob";
 import { insuranceNotApplied } from "../matching/insurance-not-applied";
+import { motherBabyRepeat } from "../matching/mother-baby-repeat";
 import type { Rule } from "../rules/rule";
 
 export const allRules: Rule[] = [
@@ -10,6 +11,7 @@ export const allRules: Rule[] = [
   birthPackage,
   balanceAboveEob,
   insuranceNotApplied,
+  motherBabyRepeat,
 ];
 
 // When two rules explain the same gap on the same paper, the more specific one wins,

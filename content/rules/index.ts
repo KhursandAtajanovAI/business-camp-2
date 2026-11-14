@@ -3,6 +3,7 @@ import { duplicateLine } from "./duplicate-line";
 import { birthPackage } from "./birth-package";
 import { balanceAboveEob } from "./balance-above-eob";
 import { insuranceNotApplied } from "./insurance-not-applied";
+import { motherBabyRepeat } from "./mother-baby-repeat";
 import type { RuleDescription } from "./types";
 
 export type { RuleDescription } from "./types";
@@ -12,6 +13,7 @@ const all: RuleDescription[] = [
   birthPackage,
   balanceAboveEob,
   insuranceNotApplied,
+  motherBabyRepeat,
 ];
 
 export const ruleDescriptions: Record<string, RuleDescription> = Object.fromEntries(all.map((rule) => [rule.id, rule]));
