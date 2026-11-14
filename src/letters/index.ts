@@ -1,6 +1,7 @@
 // The only file other modules import from letters.
-import type { Analysis, Finding, LetterPackage } from "@/contracts";
+import type { Analysis, CaseFile, Finding, LetterPackage } from "@/contracts";
 import { explainFinding } from "@/explain";
+import { buildAppealContent } from "./appeal/build-appeal";
 import { buildCallScript } from "./call-script/build-call-script";
 import { buildEscalationSteps } from "./escalation/build-escalation";
 import { buildLetterContent } from "./letter/letter-content";
@@ -24,4 +25,11 @@ export async function buildLetterPackage(analysis: Analysis, selected: Finding[]
     callScript: buildCallScript(groups),
     escalationSteps: buildEscalationSteps(analysis, selected),
   };
+}
+
+// Builds an appeal letter (PDF link) for the insurance plan from the family case file.
+// Throws a LetterError with a kind message when the case has no unpaid service on an EOB.
+export async function buildAppealLetter(caseFile: CaseFile): Promise<{ letterPdfUrl: string }> {
+  const pdf = await renderLettersPdf(buildAppealContent(caseFile, todayIso()));
+  return { letterPdfUrl: pdfToDataUrl(pdf) };
 }
