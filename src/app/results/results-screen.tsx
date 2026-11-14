@@ -2,6 +2,7 @@
 
 import type { Analysis } from "@/contracts";
 import { Button } from "@/components/button/button";
+import { Card } from "@/components/card/card";
 import { NextStep } from "@/components/layout/next-step";
 import { QuietState, Waiting } from "@/components/states/quiet-state";
 import { formatMoney } from "../_format/format";
@@ -54,6 +55,11 @@ export function ResultsScreen() {
           />
         ))}
       </section>
+      <Card tone="hint" className="flex flex-col gap-2">
+        <h2 className="text-xl font-extrabold">{results.lessonTitle}</h2>
+        <p>{results.lessonText}</p>
+        <Button tone="quiet" href="/lessons">{results.lessonLink}</Button>
+      </Card>
       <p role="status" className="font-bold">
         {chosenFindings.length > 0 ? results.chosenSummary(chosenFindings.length, formatMoney(chosenCents)) : results.noneChosen}
       </p>
