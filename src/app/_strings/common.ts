@@ -15,5 +15,4 @@ export const common = {
   whyWeAsk: "Why we ask",
   home: "Home",
   moneyInQuestion: "money in question",
-  nav: { caseFile: "My case file", lessons: "Short lessons", game: "Detective game", pricing: "Pricing" },
 };

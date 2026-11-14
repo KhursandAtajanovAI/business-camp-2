@@ -1,2 +1,4 @@
 // Quiet links in the footer. A screen is listed here only once it really exists.
-export const footerLinks: { href: string; label: string }[] = [];
+export const footerLinks: { href: string; label: string }[] = [
+  { href: "/pricing", label: "Pricing" },
+];
