@@ -1,10 +1,9 @@
-// STUB (stage 0): Adilet replaces it with real plain-English explanations.
-import type { Analysis, Finding } from "@/contracts";
+// The only file other modules import from explain. Safe for the browser.
+import type { Analysis } from "@/contracts";
 
-export function explainFinding(finding: Finding): string {
-  return finding.title;
-}
+export { explainFinding } from "./explain-finding";
 
+// STUB: the helper chat arrives in stage 3 (package A14).
 export async function askHelper(_question: string, _analysis: Analysis): Promise<string> {
   return "The helper is not ready yet.";
 }
