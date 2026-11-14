@@ -1,0 +1,21 @@
+export const home = {
+  title: "You just had a baby. Your bills shouldn't be another thing to worry about.",
+  lead: "Add a birth bill and in a couple of minutes we show you what is worth asking the billing office about. The check is free.",
+  trySample: "Try it on an example",
+  trySampleWorking: "Reading the example",
+  trySampleNote: "We open a made-up bill and check it the same way we would check yours.",
+  ownBill: "Check my own bill",
+  noAccount: "No account needed.",
+  stepsTitle: "How it works",
+  steps: [
+    { title: "Add a paper", text: "A photo, a PDF or pasted text. Hospital bills and insurance EOB papers both work." },
+    { title: "See what is worth asking about", text: "We check the arithmetic and the billing rules, and show the money in question in plain words." },
+    { title: "Get a letter and a call script", text: "A ready letter for the billing office and the words to say on the phone." },
+  ],
+  priceTitle: "What it costs",
+  priceText: "The check is always free. The letter, the call script and help with your case cost $29 once or $14.99 a month.",
+  priceLink: "See the plans",
+  privacyTitle: "Your privacy",
+  privacyText: "Your paper is read on your own device. What we keep has no name, address or policy number in it.",
+  gentleProblem: "We could not open the example just now. Please try once more in a moment.",
+};
