@@ -56,3 +56,8 @@ logs/
 # Local agent worktrees / settings
 .claude/settings.local.json
 .worktrees/
+
+# Next.js
+next-env.d.ts
+*.tsbuildinfo
+.vercel/
