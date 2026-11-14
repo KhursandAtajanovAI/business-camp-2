@@ -7,9 +7,10 @@ export function sproutStage(done: number, total: number): SproutStage {
   return Math.min(4, Math.max(1, Math.round((done / total) * 4))) as SproutStage;
 }
 
+// Give a label when the sprout tells the person something; leave it out when it is decoration.
 export function Sprout({ stage, className = "", label }: { stage: SproutStage; className?: string; label?: string }) {
   return (
-    <svg viewBox="0 0 120 120" className={`animate-grow ${className}`} role="img" aria-label={label ?? "A growing sprout"} key={stage}>
+    <svg viewBox="0 0 120 120" className={`animate-grow ${className}`} role={label ? "img" : undefined} aria-label={label} aria-hidden={label ? undefined : true}>
       <ellipse cx="60" cy="104" rx="38" ry="9" className="fill-amber-soft" />
       {stage === 0 && <ellipse cx="60" cy="98" rx="8" ry="6" className="fill-amber" />}
       {stage >= 1 && <path d={`M60 100 V${[0, 78, 62, 46, 40][stage]}`} className="stroke-sage-deep" strokeWidth="5" strokeLinecap="round" fill="none" />}
