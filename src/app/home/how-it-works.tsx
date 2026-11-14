@@ -1,4 +1,5 @@
 import { Card } from "@/components/card/card";
+import { WithHints } from "@/components/hint/with-hints";
 import { Sprout, type SproutStage } from "@/design/illustrations";
 import { home } from "../_strings/home";
 
@@ -12,7 +13,7 @@ export function HowItWorks() {
           <Sprout stage={(index + 1) as SproutStage} className="h-16 w-16 shrink-0" />
           <div>
             <h3 className="text-xl font-extrabold">{step.title}</h3>
-            <p className="mt-1 text-ink-soft">{step.text}</p>
+            <p className="mt-1 text-ink-soft"><WithHints text={step.text} /></p>
           </div>
         </Card>
       ))}
