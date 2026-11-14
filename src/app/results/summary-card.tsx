@@ -1,8 +1,10 @@
 import type { Analysis } from "@/contracts";
 import { Card } from "@/components/card/card";
 import { SampleTag } from "@/components/card/sample-tag";
+import { WithHints } from "@/components/hint/with-hints";
 import { countOf, formatMoney } from "../_format/format";
 import { results } from "../_strings/results";
+import { HealthNote } from "./health-note";
 
 // The first thing a parent sees: how many things are worth asking about and the money in question.
 export function SummaryCard({ analysis }: { analysis: Analysis }) {
@@ -19,8 +21,9 @@ export function SummaryCard({ analysis }: { analysis: Analysis }) {
           <p className="mt-1">{results.moneyNote}</p>
         </div>
       ) : (
-        <p>{results.calmText}</p>
+        <p><WithHints text={results.calmText} /></p>
       )}
+      <HealthNote score={analysis.healthScore} />
       <p className="text-ink-soft">{results.papersRead(countOf(analysis.documents.length, "paper", "papers"))}</p>
     </Card>
   );
