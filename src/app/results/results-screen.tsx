@@ -13,7 +13,7 @@ export function ResultsScreen() {
   if (!analysis) {
     return (
       <QuietState title={results.emptyTitle} text={results.emptyText}>
-        <Button href="/">{results.emptyAction}</Button>
+        <Button href="/upload">{results.emptyAction}</Button>
       </QuietState>
     );
   }
