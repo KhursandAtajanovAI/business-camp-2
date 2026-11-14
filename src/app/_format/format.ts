@@ -18,6 +18,6 @@ export function paperName(kind: DocumentKind): string {
 }
 
 // "1 paper", "3 papers".
-export function countOf(count: number, [one, many]: readonly string[]): string {
+export function countOf(count: number, one: string, many: string): string {
   return `${count} ${count === 1 ? one : many}`;
 }

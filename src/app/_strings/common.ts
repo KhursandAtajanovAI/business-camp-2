@@ -13,10 +13,6 @@ export const common = {
     "We check arithmetic and billing rules. This is not medical or legal advice, and we cannot promise any result.",
   whatNext: "What happens next",
   whyWeAsk: "Why we ask",
-  more: "More on this site",
-  // Words for counting: one, many.
-  papers: ["paper", "papers"],
-  things: ["thing", "things"],
-  lines: ["line", "lines"],
+  home: "Home",
   moneyInQuestion: "money in question",
 };

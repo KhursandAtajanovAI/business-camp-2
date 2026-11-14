@@ -1,7 +1,6 @@
 import type { Analysis } from "@/contracts";
 import type { Lesson } from "@content/lessons/lessons";
 import { countOf, formatMoney, paperName } from "../_format/format";
-import { common } from "../_strings/common";
 import { lessonWords as words } from "../_strings/lessons";
 import { confidenceNames } from "../_strings/papers";
 
@@ -20,7 +19,7 @@ export function ownExample(analysis: Analysis, isSample: boolean): Record<string
     lineQuantity: String(line.quantity),
     lineAmount: formatMoney(line.amountCents),
     lineCodeNote: line.code ? words.codeNote(line.code) : words.noCodeNote,
-    lineCount: countOf(paper.lines.length, common.lines),
+    lineCount: countOf(paper.lines.length, "line", "lines"),
     lineSum: formatMoney(lineSum),
     total: formatMoney(paper.totalCents),
     totalVerdict: lineSum === paper.totalCents ? words.totalMatch : words.totalGap(formatMoney(Math.abs(paper.totalCents - lineSum))),
@@ -28,7 +27,7 @@ export function ownExample(analysis: Analysis, isSample: boolean): Record<string
     findingVerdict: finding
       ? words.findingYes(whose, finding.title, formatMoney(finding.atStakeCents), confidenceNames[finding.confidence])
       : words.findingNo(whose),
-    paperCount: countOf(analysis.documents.length, common.papers),
+    paperCount: countOf(analysis.documents.length, "paper", "papers"),
     paperList: analysis.documents.map((document) => paperName(document.kind).toLowerCase()).join(", "),
   };
 }

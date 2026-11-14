@@ -16,7 +16,7 @@ export function Hint({ term, children }: { term: GlossaryTerm; children: string 
         aria-expanded={open}
         aria-controls={noteId}
         title={hintWords.open}
-        className="-my-3 inline rounded-md py-3 font-bold text-lavender-deep underline decoration-lavender decoration-dotted decoration-2 underline-offset-4 hover:decoration-solid"
+        className="-my-3 inline rounded-md py-3 font-bold text-lavender-deep underline decoration-lavender decoration-dotted decoration-2 underline-offset-4 hover:bg-lavender-soft"
       >
         {children}
       </button>
