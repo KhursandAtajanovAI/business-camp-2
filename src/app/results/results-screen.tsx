@@ -8,11 +8,13 @@ import { QuietState, Waiting } from "@/components/states/quiet-state";
 import { formatMoney } from "../_format/format";
 import { useStored } from "../_session/use-stored";
 import { results } from "../_strings/results";
+import { writeStored } from "../_session/storage";
 import { FindingCard } from "./finding-card";
+import { LinesEditor } from "./lines-editor";
 import { SummaryCard } from "./summary-card";
 
 export function ResultsScreen() {
-  const { value: analysis, ready } = useStored<Analysis>("analysis");
+  const { value: analysis, ready, save: saveAnalysis } = useStored<Analysis>("analysis");
   const chosen = useStored<string[]>("chosen");
   if (!ready || !chosen.ready) return <Waiting text={results.loading} />;
   if (!analysis) {
@@ -29,10 +31,19 @@ export function ResultsScreen() {
   const chosenCents = chosenFindings.reduce((sum, finding) => sum + finding.atStakeCents, 0);
   const toggle = (id: string) => chosen.save(chosenIds.includes(id) ? chosenIds.filter((other) => other !== id) : [...chosenIds, id]);
 
+  // A corrected line gives a fresh check: finding ids may change, so the ticks start over.
+  // The person's own papers are kept in step, so the upload screen shows the same lines.
+  const recount = (next: Analysis) => {
+    saveAnalysis(next);
+    chosen.save(null);
+    if (next.documents.every((document) => !document.isDemo)) writeStored("papers", next.documents);
+  };
+
   if (analysis.findings.length === 0) {
     return (
       <>
         <SummaryCard analysis={analysis} />
+        <LinesEditor analysis={analysis} onChange={recount} />
         <NextStep>
           <Button href="/upload">{results.calmNext}</Button>
         </NextStep>
@@ -55,6 +66,7 @@ export function ResultsScreen() {
           />
         ))}
       </section>
+      <LinesEditor analysis={analysis} onChange={recount} />
       <Card tone="hint" className="flex flex-col gap-2">
         <h2 className="text-xl font-extrabold">{results.lessonTitle}</h2>
         <p>{results.lessonText}</p>
