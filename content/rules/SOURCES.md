@@ -27,6 +27,14 @@ The same facts live next to each rule in this folder (`sourceSays`, `sourceCheck
 - `duplicate-line`, `balance-above-eob`, `insurance-not-applied` and `total-mismatch` got a more
   exact CMS page than the general one they pointed to before.
 
+## Reference prices
+
+`src/engine/rules/reference-prices.ts` holds 31 lab tests that are common around a birth. Every
+price was read from the Kentucky Medicaid 2026 schedule above (effective January 1, 2026, revised
+September 23, 2026) and carries the source, the link and the year. It is what one state Medicaid
+program pays, not what a private plan must pay, so the rule only says "worth asking".
+One more price is verified but not switched on yet: blood group typing, 2.99 dollars (see the note in that file).
+
 ## What we could not check
 
 - The two new rules recognise the care by the words on the paper ("well-baby visit", "room and board"),

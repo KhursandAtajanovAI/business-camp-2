@@ -92,6 +92,7 @@ Do not use the 100% of the sample group alone: those sets and the rules were wri
 |---|---|---|---|---|
 | Stage 5 / Commit 1 | 9 | 17 of 22 (77%) | 3 of 20 findings | first measurement, rules as merged in stage 4 |
 | Stage 5 / Commit 3 | 11 | 19 of 22 (86%) | 3 of 22 findings | two new rules: `preventive-care-charged`, `stay-not-covered` |
+| Stage 5 / Commit 4 | 11 | 19 of 22 (86%) | 3 of 22 findings | reference prices grew from 2 to 31 lab tests; no number moved, because no labelled set has a new overpriced test |
 
 The gain from 77% to 86% is **not independent evidence**: the two new rules were written by people
 who already knew the two check sets they now solve (`check-mistake-8`, `check-mistake-9`).

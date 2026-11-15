@@ -30,4 +30,7 @@ export const allRules: Rule[] = [
 // so the same money is never counted twice.
 export const moreSpecificRules: Record<string, string[]> = {
   "balance-above-eob": ["insurance-not-applied", "out-of-network-surprise"],
+  // A bill printed before the insurance payment is in question as a whole already,
+  // and the plan's own price will replace the list price once the payment is applied.
+  "price-above-reference": ["insurance-not-applied"],
 };

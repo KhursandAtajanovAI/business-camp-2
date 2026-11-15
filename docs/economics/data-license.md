@@ -1,7 +1,7 @@
 # Data license check: CMS and AMA files
 
 Short answer: **no CMS or AMA data files are in this repository, and none should be added.**
-The rules use a few billing code numbers, described in our own words, and a two-line hand-written price table.
+The rules use a few billing code numbers, described in our own words, and a short hand-written price table (31 lab tests, one public source).
 
 ## What we looked at
 
@@ -11,7 +11,7 @@ The rules use a few billing code numbers, described in our own words, and a two-
 | NCCI edit files (pairs of codes that may not be billed together) | CMS publishes them; they contain CPT codes | **No**, not until an AMA license is in place. | Not downloaded, not committed. We use the rule stated in the NCCI Policy Manual text instead. |
 | Medicare Physician Fee Schedule files | CMS publishes them; they contain CPT codes and require accepting the AMA license on download | **No.** | Not used. |
 | NCCI Policy Manual (text of the rules) | CMS, a US government work | Quoting and citing is fine. | Cited as the source of the birth package rule, with a link. |
-| Clinical Laboratory Fee Schedule and state Medicaid lab fee schedules | CMS and states; public documents, but keyed by CPT codes | Whole files: **no**, for the same CPT reason. | A hand-written table of two prices with the source named (`src/engine/rules/reference-prices.ts`). |
+| Clinical Laboratory Fee Schedule and state Medicaid lab fee schedules | CMS and states; public documents, but keyed by CPT codes | Whole files: **no**, for the same CPT reason. | A hand-written table of 31 lab prices, each with its source, link and year (`src/engine/rules/reference-prices.ts`). Descriptions are our own words. |
 | HCPCS Level II codes, revenue codes | CMS (HCPCS); NUBC (revenue codes, licensed) | HCPCS Level II is public; revenue code tables are licensed. | We only read the codes that are printed on the family's own paper. |
 
 ## Where data would be loaded, if licensed later

@@ -10,9 +10,9 @@ export const priceAboveReference: RuleDescription = {
     "Kentucky Medicaid, 2026 Clinical Diagnostic Laboratory Fee Schedule (effective January 1, 2026; revised September 23, 2026), used as a public reference price list",
   sourceUrl: "https://www.chfs.ky.gov/agencies/dms/DMSFeeRateSchedules/2026ClinicalLabRates.pdf",
   sourceSays:
-    "The schedule lists what one state Medicaid program pays for each lab service, for example 9.34 dollars for a blood draw. No official source says that a price ten times higher is wrong; that threshold is our own.",
+    "The schedule lists what one state Medicaid program pays for each lab service, for example 9.34 dollars for a blood draw and 7.77 dollars for a complete blood count. No official source says that a price ten times higher is wrong; that threshold is our own.",
   sourceCheck: "data_only",
   checkedOn: "2026-11-15",
   confidenceNote:
-    "Worth asking. A small hand-written table of two services; a reference price is not what a private plan must pay.",
+    "Worth asking. A hand-written table of 31 common lab tests, each price read from the source; a reference price is not what a private plan must pay.",
 };
