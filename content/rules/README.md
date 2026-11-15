@@ -14,6 +14,8 @@ explanation shown next to a finding, the source, and why findings get the confid
 | `price-above-reference` | price over ten times a public price list | worth asking | official prices, our threshold |
 | `once-per-birth` | once-per-birth service with quantity above one | worth asking | not confirmed |
 | `total-mismatch` | total higher than the lines add up to | sure / worth asking | CMS definition plus arithmetic |
+| `preventive-care-charged` | well-baby visit or breastfeeding support in network with a charge | worth asking | confirmed, HealthCare.gov |
+| `stay-not-covered` | hospital day right after the birth that the plan did not cover | worth asking | confirmed, CMS (federal law) |
 
 The links, the quotes and the date of the check are in [SOURCES.md](SOURCES.md).
 

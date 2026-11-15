@@ -8,6 +8,8 @@ import { outOfNetworkSurprise } from "./out-of-network-surprise";
 import { priceAboveReference } from "./price-above-reference";
 import { oncePerBirth } from "./once-per-birth";
 import { totalMismatch } from "./total-mismatch";
+import { preventiveCareCharged } from "./preventive-care-charged";
+import { stayNotCovered } from "./stay-not-covered";
 import type { RuleDescription } from "./types";
 
 export type { RuleDescription } from "./types";
@@ -22,6 +24,8 @@ const all: RuleDescription[] = [
   priceAboveReference,
   oncePerBirth,
   totalMismatch,
+  preventiveCareCharged,
+  stayNotCovered,
 ];
 
 export const ruleDescriptions: Record<string, RuleDescription> = Object.fromEntries(all.map((rule) => [rule.id, rule]));

@@ -12,4 +12,9 @@ export function findEobFor(bill: ParsedDocument, documents: ParsedDocument[]): P
     .sort((first, second) => sharedCodes(second) - sharedCodes(first))[0];
 }
 
+// The other way round: the bill an insurance explanation belongs to, if the family has it.
+export function findBillFor(eob: ParsedDocument, documents: ParsedDocument[]): ParsedDocument | undefined {
+  return documents.find((document) => document.kind !== "insurance_eob" && findEobFor(document, documents) === eob);
+}
+
 export const planPaidTotal = (eob: ParsedDocument): number => eob.lines.reduce((sum, line) => sum + (line.planPaidCents ?? 0), 0);
