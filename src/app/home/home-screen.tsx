@@ -14,9 +14,14 @@ export function HomeScreen() {
     <PageShell>
       <ResumeCard />
       <section className="flex flex-col gap-4">
-        <Cradle className="h-28 w-40 animate-settle" />
+        <Cradle className="h-20 w-28 animate-settle" />
         <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl">{home.title}</h1>
         <p className="text-xl text-ink-soft"><WithHints text={home.lead} /></p>
+        <ul className="flex flex-wrap gap-2" aria-label={home.stepsTitle}>
+          {home.quickFacts.map((fact) => (
+            <li key={fact} className="rounded-full bg-sage-soft px-3 py-1 font-bold text-sage-deep">{fact}</li>
+          ))}
+        </ul>
       </section>
       <NextStep note={`${home.trySampleNote} ${home.noAccount}`}>
         <TrySample />
