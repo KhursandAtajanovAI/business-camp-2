@@ -8,6 +8,7 @@ import { Card } from "@/components/card/card";
 import { WithHints } from "@/components/hint/with-hints";
 import { pricing } from "../_strings/pricing";
 import { upload } from "../_strings/upload";
+import { LaterPlans } from "./later-plans";
 import { PlanCard } from "./plan-card";
 
 function List({ items }: { items: string[] }) {
@@ -55,6 +56,8 @@ export function PricingScreen({ returnTo }: { returnTo: string }) {
       )}
       {!paid && (
         <>
+          <h2 className="text-2xl font-extrabold">{pricing.startTitle}</h2>
+          <p className="text-ink-soft">{pricing.startLead}</p>
           <PlanCard plan="one_time_29" tone="main" waiting={opening === "one_time_29"} onChoose={choose} />
           <PlanCard plan="monthly_14_99" tone="second" waiting={opening === "monthly_14_99"} onChoose={choose} />
         </>
@@ -63,6 +66,7 @@ export function PricingScreen({ returnTo }: { returnTo: string }) {
         <h2 className="text-xl font-extrabold">{pricing.honestTitle}</h2>
         <List items={[...pricing.paidIncludes, ...pricing.honest]} />
       </Card>
+      <LaterPlans />
       {!paid && <Button tone="quiet" href="/results">{pricing.notNow}</Button>}
     </>
   );
