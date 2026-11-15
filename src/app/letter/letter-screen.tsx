@@ -8,6 +8,7 @@ import { Button } from "@/components/button/button";
 import { QuietState, Waiting } from "@/components/states/quiet-state";
 import { countOf, formatMoney } from "../_format/format";
 import { useStored } from "../_session/use-stored";
+import { common } from "../_strings/common";
 import { letter } from "../_strings/letter";
 import { LockedView } from "./locked-view";
 import { ReadyView } from "./ready-view";
@@ -52,7 +53,7 @@ export function LetterScreen() {
   }
   if (!paid) {
     const money = formatMoney(findings.reduce((sum, finding) => sum + finding.atStakeCents, 0));
-    return <LockedView summary={letter.lockedText(countOf(findings.length, "thing", "things"), money)} />;
+    return <LockedView summary={letter.lockedText(countOf(findings.length, common.things), money)} />;
   }
   if (!pack) return <Waiting text={letter.loading} />;
   return <ReadyView pack={pack} />;
