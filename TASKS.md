@@ -71,21 +71,24 @@ Stages: 0 skeleton, 1 core, 2 full path (all P0), 3 retention (P1), 4 growth (P2
 | ID | Package | Who | Status |
 |----|---------|-----|--------|
 | H22 | Merge the phone fixes (PR #14) and build main | Khursand | merged |
-| H23 | Deploy main and put the link in the README | Khursand | in progress |
+| H23 | Deploy main and put the link in the README | Khursand | merged; live at https://business-cup-2-tau.vercel.app |
 | H16 | Types of the family path (`src/contracts/family.ts`) | Khursand | merged |
 | H18 | Live model on the person's own bill (`src/model-review`, `/api/review`) | Khursand | merged |
 | H19 | Editing bill lines, data side (`src/intake`) | Khursand | merged; the screen is D16 |
 | H24 | Deck, package list, README, roadmap match the product | Khursand | merged |
-| D15 | Results screen fits a 360 px phone; one pinned button, 11% of the screen | Dias | ready |
-| D16 | Editable bill lines on the upload and results screens | Dias | ready |
-| D17 | "Explained by the model / locally" badge on the results screen | Dias | ready |
-| D18 | Empty states and problems in plain words, calm offline note | Dias | ready |
-| D23 | Screenshots retaken from the live site | Dias | waits for H23 |
+| D15 | Results screen fits a 360 px phone; one pinned button, 11% of the screen | Dias | merged |
+| D16 | Editable bill lines on the upload and results screens | Dias | merged |
+| D17 | "Explained by the model / locally" badge on the results screen | Dias | merged |
+| D18 | Empty states and problems in plain words, calm offline note | Dias | merged |
+| D23 | Screenshots retaken from the live site | Dias | not done: the screenshots are from a local build |
 
 
 ## Stage 6: before the pitch
 
 | ID | Package | Who | Status |
 |----|---------|-----|--------|
-| D19 | Pricing page: free check, Start, and Family and Pause as the plan for later | Dias | ready |
-| D20 | First screen understood in ten seconds | Dias | ready |
+| D19 | Pricing page: free check, Start, and Family and Pause as the plan for later | Dias | merged |
+| D20 | First screen understood in ten seconds | Dias | merged |
+
+Known issue at code freeze: on the live site the model key is rejected by the model service (status 401),
+so explanations are written by ordinary code and the site says so. Fix: a valid `ANTHROPIC_API_KEY` in the hosting settings.

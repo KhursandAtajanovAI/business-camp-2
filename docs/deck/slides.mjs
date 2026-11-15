@@ -7,7 +7,7 @@ export const slides = [
   {
     title: "Birth Bill Check",
     lead: "Your birth bills, checked. We find billing mistakes and write the letter for you.",
-    bullets: ["For new parents in the US, in the first six months after the birth.", "Working name. Team: Khursand, Adilet, Dias.", `Repository: ${REPO}`, "Live link: added after deploy. No sign-up needed."],
+    bullets: ["For new parents in the US, in the first six months after the birth.", "Working name. Team: Khursand, Adilet, Dias.", `Repository: ${REPO}`, "Live: business-cup-2-tau.vercel.app. No sign-up needed."],
   },
   {
     title: "Maya had a baby in March. By May she has nine papers.",
@@ -29,8 +29,8 @@ export const slides = [
     title: "Code does the math. The model only explains.",
     lead: "A real product, not a chat wrapper.",
     bullets: [
-      "9 rules written in code, each with a public source and a confidence level: sure, likely, worth asking.",
-      "315 automated tests. On five sample sets the engine finds exactly the planted mistakes.",
+      "11 rules written in code, each with a public source and a confidence level: sure, likely, worth asking.",
+      "360 automated tests. On five sample sets the engine finds exactly the planted mistakes.",
       "Sample bills run through the same pipeline as real uploads.",
       "A live model explains the findings on the person's own bill; code checks every amount it writes.",
       "Names, addresses and policy numbers are hidden before any text reaches a model.",
@@ -77,7 +77,7 @@ export const slides = [
   {
     title: "Try it now, no sign-up",
     lead: "38% of people who challenged a medical bill had it reduced or removed.",
-    bullets: ["Live link: added after deploy.", `Repository with stage-by-stage history: ${REPO}`, "Open it, press \"try a sample\", get the review, the letter and a test payment in three minutes.", "Not medical or legal advice."],
+    bullets: ["Live: business-cup-2-tau.vercel.app", `Repository with stage-by-stage history: ${REPO}`, "Open it, press \"try a sample\", get the review, the letter and a test payment in three minutes.", "Not medical or legal advice."],
     sources: `Source: ${CWF}.`,
   },
 ];
