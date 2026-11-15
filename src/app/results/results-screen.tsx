@@ -10,6 +10,7 @@ import { useStored } from "../_session/use-stored";
 import { results } from "../_strings/results";
 import { writeStored } from "../_session/storage";
 import { FindingCard } from "./finding-card";
+import { HelperCard } from "./helper-card";
 import { LinesEditor } from "./lines-editor";
 import { SummaryCard } from "./summary-card";
 
@@ -67,6 +68,7 @@ export function ResultsScreen() {
         ))}
       </section>
       <LinesEditor analysis={analysis} onChange={recount} />
+      <HelperCard analysis={analysis} />
       <Card tone="hint" className="flex flex-col gap-2">
         <h2 className="text-xl font-extrabold">{results.lessonTitle}</h2>
         <p>{results.lessonText}</p>
