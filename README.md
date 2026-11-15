@@ -1,6 +1,6 @@
 # Business Cup 2.0 — birth bill check
 
-> Status: in development (hackathon build).
+> Status: ready for submission (hackathon build). All stages are merged into `main`.
 
 A website for new parents in the United States. A parent uploads a birth bill, sees
 the mistakes we found and the money in question, and gets a ready claim letter with a
@@ -49,6 +49,7 @@ the browser for the model.
 upload or paste -> src/intake (parse, hide personal data)
                 -> src/engine (rules find problems, money in question)
                 -> src/explain (plain-English explanation)
+                -> src/model-review (a live model explains the findings on this bill; code checks its numbers)
                 -> src/letters (claim letter PDF, call script, next steps)
                 -> src/payments (paywall, Stripe test mode)
                 -> src/case-file (deadlines, reminders, won or lost)
@@ -59,10 +60,20 @@ One topic is one folder. Every folder has a short README and one owner.
 | Folder | Owner | What is inside |
 |---|---|---|
 | `src/contracts` | Khursand | shared data types, the only link between streams |
-| `src/intake`, `src/letters`, `src/case-file`, `src/payments`, `src/connector` | Khursand | upload, letters, case file, payments, assistant connector |
+| `src/intake`, `src/letters`, `src/case-file`, `src/payments`, `src/connector`, `src/model-review` | Khursand | upload, letters, case file, payments, assistant connector, live model review |
 | `content/letters`, `docs/deck` | Khursand | letter templates, pitch deck |
 | `src/engine`, `src/explain`, `content/rules`, `content/demo-documents`, `docs/economics` | Adilet | rules, explanations, synthetic bills, unit economics |
 | `src/app`, `src/components`, `src/design`, `content/lessons`, `docs/screens` | Dias | screens, design, lessons |
+
+## Where the language model works
+
+- `POST /api/review`: the model reads the lines of the person's own bill and explains each finding.
+  Code checks every dollar amount in the answer against the papers.
+- `POST /api/helper`: the helper chat answers questions about the person's own case.
+- Without `ANTHROPIC_API_KEY` both answer with ordinary code and say so (`mode: "local"`).
+  `GET /api/review` shows which mode the site is in.
+
+What comes next for the product is in [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Working together
 
