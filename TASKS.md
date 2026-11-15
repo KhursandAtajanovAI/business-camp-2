@@ -64,3 +64,10 @@ Stages: 0 skeleton, 1 core, 2 full path (all P0), 3 retention (P1), 4 growth (P2
 | D12 | Share a report without personal data | `src/app/share` | 4 | Dias | ready |
 | D13 | Screenshots for the deck | `docs/screens` | 4 | Dias | ready |
 | D14 | Check of English texts and disclaimers | `src`, `content` | 4 | Dias | ready |
+| D15 | Results screen on a 360 px phone, pinned buttons | `src/app/results`, `src/components/layout` | 5 | Dias | ready |
+| D16 | Editable bill lines, money in question counted again | `src/app/results`, `src/app/_pipeline` | 5 | Dias | ready |
+| D17 | Badge: AI model or ordinary code | `src/app/results` | 5 | Dias | ready |
+| D18 | Empty states and problems in plain words | `src/app`, `src/components` | 5 | Dias | ready |
+| D23 | Screenshots from the live address | `docs/screens` | 5 | Dias | waiting for the live address (H23) |
+| D19 | Pricing page: Start, Family, Pause | `src/app/pricing` | 6 | Dias | not started |
+| D20 | Onboarding: the first screen in 10 seconds | `src/app/home` | 6 | Dias | not started |
