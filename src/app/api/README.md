@@ -6,3 +6,4 @@ it reads the request, calls the module, sends the answer.
 - `payments/*` — Khursand, calls `src/payments/server`.
 - `connector` — Khursand, calls `src/connector`.
 - `helper` — Adilet, calls `src/explain/helper`.
+- `review` — Khursand, calls `src/model-review`: the live model on the person's own papers.
