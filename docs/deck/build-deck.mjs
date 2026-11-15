@@ -1,5 +1,5 @@
 // Draws docs/deck/deck.pdf from slides.mjs. Run: node docs/deck/build-deck.mjs
-import { writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { slides } from "./slides.mjs";
@@ -36,7 +36,9 @@ function drawTable(page, rows, y, fonts, width) {
   return y - 10;
 }
 
-function drawSlide(pdf, slide, number, fonts) {
+const SCREENS = { Upload: "02-upload.png", Results: "03-results.png", Letter: "07-letter.png", "Case file": "09-case-file.png", Pricing: "06-pricing.png" };
+
+async function drawSlide(pdf, slide, number, fonts) {
   const page = pdf.addPage([W, H]);
   page.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
   page.drawRectangle({ x: 0, y: H - 10, width: W, height: 10, color: C.accent });
@@ -50,12 +52,20 @@ function drawSlide(pdf, slide, number, fonts) {
     y = drawText(page, bullet, { x: M + 20, y, font: fonts.regular, size: 16, width: textWidth - 20 }) - 9;
   }
   if (y < 66) console.warn(`Slide ${number} has too much text: shorten it.`);
-  (slide.screenshots ?? []).forEach((name, index, all) => {
-    const boxHeight = Math.min(150, (H - 170) / all.length - 12), x = W * 0.6, top = H - 120 - index * (boxHeight + 12);
-    page.drawRectangle({ x, y: top - boxHeight, width: W * 0.4 - M, height: boxHeight, color: C.white, borderColor: C.soft, borderWidth: 2 });
-    page.drawText(`Screenshot: ${name}`, { x: x + 16, y: top - 28, size: 13, font: fonts.bold, color: C.muted });
-    page.drawText("added from the live site", { x: x + 16, y: top - 46, size: 11, font: fonts.regular, color: C.muted });
-  });
+  const shots = slide.screenshots ?? [];
+  for (const [index, name] of shots.entries()) {
+    // Phone screenshots from docs/screens stand side by side; a grey box marks a missing one.
+    const slot = (W * 0.42 - M) / shots.length, x = W * 0.58 + index * slot, top = H - 110, maxH = 360;
+    const file = SCREENS[name] ? fileURLToPath(new URL(`../screens/${SCREENS[name]}`, import.meta.url)) : "";
+    if (file && existsSync(file)) {
+      const image = await pdf.embedPng(readFileSync(file));
+      const scale = Math.min((slot - 10) / image.width, maxH / image.height);
+      page.drawImage(image, { x: x + (slot - image.width * scale) / 2, y: top - image.height * scale, width: image.width * scale, height: image.height * scale });
+    } else {
+      page.drawRectangle({ x, y: top - 150, width: slot - 10, height: 150, color: C.white, borderColor: C.soft, borderWidth: 2 });
+      page.drawText(`Screenshot: ${name}`, { x: x + 10, y: top - 28, size: 11, font: fonts.bold, color: C.muted });
+    }
+  }
   if (slide.sources) drawText(page, slide.sources, { x: M, y: 50, font: fonts.regular, size: 9, color: C.muted, width: W - M * 2 - 40 });
   page.drawText(String(number), { x: W - M, y: 22, size: 10, font: fonts.regular, color: C.muted });
 }
@@ -64,7 +74,7 @@ const pdf = await PDFDocument.create();
 pdf.setTitle("Birth Bill Check: pitch deck");
 const fonts = { regular: await pdf.embedFont(StandardFonts.Helvetica), bold: await pdf.embedFont(StandardFonts.HelveticaBold) };
 if (slides.length > 10) throw new Error("The deck may have at most 10 slides.");
-slides.forEach((slide, index) => drawSlide(pdf, slide, index + 1, fonts));
+for (const [index, slide] of slides.entries()) await drawSlide(pdf, slide, index + 1, fonts);
 const target = fileURLToPath(new URL("./deck.pdf", import.meta.url));
 writeFileSync(target, await pdf.save());
 console.log(`Wrote ${slides.length} slides to ${target}`);

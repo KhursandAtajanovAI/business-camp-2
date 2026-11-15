@@ -12,11 +12,14 @@ import { writeStored } from "../_session/storage";
 import { FindingCard } from "./finding-card";
 import { HelperCard } from "./helper-card";
 import { LinesEditor } from "./lines-editor";
+import { ReviewCard } from "./review-card";
+import { useReview } from "./use-review";
 import { SummaryCard } from "./summary-card";
 
 export function ResultsScreen() {
   const { value: analysis, ready, save: saveAnalysis } = useStored<Analysis>("analysis");
   const chosen = useStored<string[]>("chosen");
+  const review = useReview(analysis);
   if (!ready || !chosen.ready) return <Waiting text={results.loading} />;
   if (!analysis) {
     return (
@@ -54,6 +57,7 @@ export function ResultsScreen() {
   return (
     <>
       <SummaryCard analysis={analysis} />
+      <ReviewCard review={review} />
       <section className="flex flex-col gap-4" aria-labelledby="findings">
         <h2 id="findings" className="text-2xl font-extrabold">{results.findingsTitle}</h2>
         <p className="text-ink-soft">{results.chooseNote}</p>
@@ -61,6 +65,7 @@ export function ResultsScreen() {
           <FindingCard
             key={finding.id}
             finding={finding}
+            explanation={review?.explanations.find((item) => item.findingId === finding.id)?.text}
             paper={analysis.documents.find((document) => document.id === finding.documentId)}
             chosen={chosenIds.includes(finding.id)}
             onToggle={() => toggle(finding.id)}

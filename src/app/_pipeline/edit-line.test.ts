@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { checkPapers, checkSample } from "./check-papers";
-import { editLine, readDollars } from "./edit-line";
+import { correctLine as editLine, readDollars } from "./edit-line";
 
 describe("correcting a line", () => {
   it("reads dollar amounts the way people type them", () => {
@@ -26,7 +26,7 @@ describe("correcting a line", () => {
     const finding = before.findings.find((candidate) => candidate.lineIds.length > 0)!;
     const paper = before.documents.find((document) => document.id === finding.documentId)!;
     // A line the check asked about becomes a different, cheaper service.
-    const after = checkPapers(editLine(before.documents, paper.id, finding.lineIds[finding.lineIds.length - 1], { description: "Corrected by the family", amountCents: 100, code: undefined } as never));
+    const after = checkPapers(editLine(before.documents, paper.id, finding.lineIds[finding.lineIds.length - 1], { description: "Corrected by the family", amountCents: 100, code: "" }));
     const sum = after.findings.reduce((total, item) => total + item.atStakeCents, 0);
     expect(after.totalAtStakeCents).toBe(sum);
     expect(JSON.stringify(after.findings)).not.toBe(JSON.stringify(before.findings));

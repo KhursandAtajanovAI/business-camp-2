@@ -6,7 +6,7 @@ import { Button } from "@/components/button/button";
 import { Card } from "@/components/card/card";
 import { formatMoney, paperName } from "../_format/format";
 import { checkPapers } from "../_pipeline/check-papers";
-import { editLine, type LineEdit } from "../_pipeline/edit-line";
+import { correctLine, type LineEdit } from "../_pipeline/edit-line";
 import { results } from "../_strings/results";
 import { LineRow } from "./line-row";
 
@@ -17,7 +17,7 @@ export function LinesEditor({ analysis, onChange }: { analysis: Analysis; onChan
   const [note, setNote] = useState<string | null>(null);
 
   function correct(documentId: string, lineId: string, edit: LineEdit) {
-    const next = checkPapers(editLine(analysis.documents, documentId, lineId, edit));
+    const next = checkPapers(correctLine(analysis.documents, documentId, lineId, edit));
     onChange(next);
     setNote(results.recounted(formatMoney(next.totalAtStakeCents)));
   }
