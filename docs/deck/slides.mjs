@@ -30,8 +30,9 @@ export const slides = [
     lead: "A real product, not a chat wrapper.",
     bullets: [
       "9 rules written in code, each with a public source and a confidence level: sure, likely, worth asking.",
-      "293 automated tests. On five sample sets the engine finds exactly the planted mistakes.",
+      "315 automated tests. On five sample sets the engine finds exactly the planted mistakes.",
       "Sample bills run through the same pipeline as real uploads.",
+      "A live model explains the findings on the person's own bill; code checks every amount it writes.",
       "Names, addresses and policy numbers are hidden before any text reaches a model.",
       "We say \"money in question\", never \"we will get your money back\". No medical or legal advice.",
     ],
@@ -70,7 +71,8 @@ export const slides = [
   },
   {
     title: "After the birth: the first year, then the next child",
-    bullets: ["Next: pediatrician and vaccine bills of the first year, emergency visits, the partner's bills.", "Later: a yearly family plan and a money-back guarantee on the letter.", "Data: licensed code tables to add more rules (see docs/economics/data-license.md).", "B2B, such as employers and doulas, only as a later channel. The payer stays the parent."],
+    lead: "A plan, not a product yet. Prices are our assumptions.",
+    bullets: ["First year: insurance follow-ups, adding the baby to the plan, well-baby visit bills.", "Family plan: $6.99 a month or $59 a year after the case closes; a free pause instead of cancelling.", "Give a month, get a month: referrals between parents.", "Data: licensed code tables to add more rules (see docs/economics/data-license.md).", "B2B, such as employers and doulas, only as a later channel. The payer stays the parent."],
   },
   {
     title: "Try it now, no sign-up",
