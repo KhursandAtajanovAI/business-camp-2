@@ -1,5 +1,12 @@
 # Business Cup 2.0 — birth bill check
 
+## Live demo
+
+**https://business-cup-2-tau.vercel.app** — open it, no sign-up needed.
+
+Payments run in Stripe test mode: no real money moves. Use the test card `4242 4242 4242 4242`
+with any future date and any CVC.
+
 > Status: ready for submission (hackathon build). All stages are merged into `main`.
 
 A website for new parents in the United States. A parent uploads a birth bill, sees
