@@ -4,6 +4,7 @@ import { common } from "@/app/_strings/common";
 import { Sprout } from "@/design/illustrations";
 import { Backdrop } from "./backdrop";
 import { BackLater } from "./back-later";
+import { OfflineNote } from "./offline-note";
 import { SiteFooter } from "./site-footer";
 
 // The frame every screen sits in: name, "Back later", the screen itself, the disclaimer.
@@ -18,6 +19,7 @@ export function PageShell({ children }: { children: ReactNode }) {
         </Link>
         <BackLater />
       </header>
+      <OfflineNote />
       <main className="flex flex-1 flex-col gap-6 pt-2">{children}</main>
       <SiteFooter />
     </div>

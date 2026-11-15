@@ -8,4 +8,8 @@ export const states = {
   hiccupAction: "Try once more",
   hiccupHome: "Go to the start",
   loading: "One moment",
+  offline: "You seem to be offline right now. Everything you added is safe on this device, and checking a paper still works.",
+  wholeTitle: "The site needs a fresh start",
+  wholeText: "Something on our side got in the way. Your papers are still saved on this device.",
+  wholeAction: "Start the page again",
 };
