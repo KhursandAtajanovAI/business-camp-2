@@ -47,8 +47,9 @@ test("the model cannot add findings, promise money or give advice", () => {
 
 test("a busy, silent or unreachable model falls back to local with the reason", async () => {
   const status = (code: number, body = "{}") => async () => new Response(body, { status: code });
-  expect(await callModel(sampleAnalysis, "key", status(429))).toEqual({ ok: false, reason: "model_busy" });
-  expect(await callModel(sampleAnalysis, "key", status(500))).toEqual({ ok: false, reason: "model_unreachable" });
+  expect(await callModel(sampleAnalysis, "key", status(429))).toEqual({ ok: false, reason: "model_busy", status: 429 });
+  expect(await callModel(sampleAnalysis, "key", status(401))).toEqual({ ok: false, reason: "model_unreachable", status: 401 });
+  expect(await reviewOnServer(sampleAnalysis, "key", async () => ({ ok: false, reason: "model_unreachable", status: 401 }))).toMatchObject({ mode: "local", modelStatus: 401 });
   expect(await callModel(sampleAnalysis, "key", status(200, JSON.stringify({ content: [] })))).toEqual({ ok: false, reason: "empty_answer" });
   expect(await callModel(sampleAnalysis, "key", async () => { throw new Error("offline"); })).toEqual({ ok: false, reason: "model_unreachable" });
   expect(await reviewOnServer(sampleAnalysis, "key", async () => ({ ok: false, reason: "model_busy" }))).toMatchObject({ mode: "local", reason: "model_busy" });

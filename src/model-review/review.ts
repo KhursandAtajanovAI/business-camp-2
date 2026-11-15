@@ -13,10 +13,11 @@ function localSummary(analysis: Analysis): string {
 }
 
 // The honest fallback: code alone, with the rule's own words. It says why the model was not used.
-export function localReview(analysis: Analysis, reason: LocalReason): Review {
+export function localReview(analysis: Analysis, reason: LocalReason, modelStatus?: number): Review {
   return {
     mode: "local",
     reason,
+    ...(modelStatus === undefined ? {} : { modelStatus }),
     summary: localSummary(analysis),
     explanations: analysis.findings.map((finding) => ({ findingId: finding.id, text: explainFinding(finding) })),
   };
@@ -28,7 +29,7 @@ export async function reviewOnServer(analysis: Analysis, apiKey = process.env.AN
   if (!apiKey) return localReview(analysis, "no_key");
   if (analysis.findings.length === 0) return { mode: "model", summary: localSummary(analysis), explanations: [] };
   const reply = await call(analysis, apiKey);
-  if (!reply.ok) return localReview(analysis, reply.reason);
+  if (!reply.ok) return localReview(analysis, reply.reason, reply.status);
   const review = checkAnswer(reply.text, analysis);
   if (!review) return localReview(analysis, "answer_rejected");
   return { ...review, summary: review.summary || localSummary(analysis) };

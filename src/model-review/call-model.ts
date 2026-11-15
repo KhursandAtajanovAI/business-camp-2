@@ -16,7 +16,7 @@ const SYSTEM = [
   'Answer with JSON only: {"summary": string, "explanations": [{"findingId": string, "text": string}]}',
 ].join(" ");
 
-export type ModelReply = { ok: true; text: string } | { ok: false; reason: LocalReason };
+export type ModelReply = { ok: true; text: string } | { ok: false; reason: LocalReason; status?: number };
 type Fetcher = (url: string, init: RequestInit) => Promise<Response>;
 
 export async function callModel(analysis: Analysis, apiKey: string, fetcher: Fetcher = fetch): Promise<ModelReply> {
@@ -32,8 +32,9 @@ export async function callModel(analysis: Analysis, apiKey: string, fetcher: Fet
       }),
       signal: AbortSignal.timeout(20_000),
     });
-    if (response.status === 429 || response.status === 529) return { ok: false, reason: "model_busy" };
-    if (!response.ok) return { ok: false, reason: "model_unreachable" };
+    // The status is passed on so the owner can tell a rejected key (401) from a wrong model name (404).
+    if (response.status === 429 || response.status === 529) return { ok: false, reason: "model_busy", status: response.status };
+    if (!response.ok) return { ok: false, reason: "model_unreachable", status: response.status };
     const data = (await response.json()) as { content?: { type: string; text?: string }[] };
     const text = data.content?.find((block) => block.type === "text")?.text?.trim() ?? "";
     return text ? { ok: true, text } : { ok: false, reason: "empty_answer" };
