@@ -26,7 +26,9 @@ export const birthPackage: Rule = {
           lineIds: [line.id],
           title: `"${line.description}" (${line.code}) is usually part of the birth package (${partOfPackage ? fullPackage : anyDelivery})`,
           atStakeCents: line.amountCents,
-          confidence: "likely",
+          // The CMS manual names the four parts of a delivery by number. For other parts it
+          // states only the principle, and with twins a second delivery line can be right.
+          confidence: partOfDelivery ? "likely" : "worth_asking",
         });
       }
     }

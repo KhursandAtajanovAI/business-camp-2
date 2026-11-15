@@ -9,12 +9,15 @@ export const totalMismatch: Rule = {
     for (const document of documents.filter(isBill)) {
       const lineSum = document.lines.reduce((sum, line) => sum + line.amountCents, 0);
       if (document.totalCents <= lineSum) continue;
+      // The parser always notes the mismatch itself; any other note means part of the
+      // paper was hard to read, and then the arithmetic is only as good as the reading.
+      const hardToRead = (document.needsReview?.length ?? 0) > 1;
       findings.push({
         documentId: document.id,
         lineIds: [],
         title: `The lines add up to ${usd(lineSum)}, but the bill says the total is ${usd(document.totalCents)}`,
         atStakeCents: document.totalCents - lineSum,
-        confidence: "sure",
+        confidence: hardToRead ? "worth_asking" : "sure",
       });
     }
     return findings;

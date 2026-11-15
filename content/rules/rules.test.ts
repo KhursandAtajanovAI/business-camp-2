@@ -1,5 +1,9 @@
+import { readFileSync } from "node:fs";
 import { expect, test } from "vitest";
+import { sampleDocument } from "@/contracts/stubs";
 import { allRules } from "@/engine/checks/all-rules";
+import { runRules } from "@/engine/checks/run-rules";
+import type { Rule } from "@/engine/rules/rule";
 import { ruleDescriptions } from "./index";
 
 const descriptions = Object.values(ruleDescriptions);
@@ -12,6 +16,31 @@ test.each(descriptions)("$id has a source with a link and says why it is as sure
   expect(rule.sourceName.length).toBeGreaterThan(10);
   expect(rule.sourceUrl).toMatch(/^https:\/\//);
   expect(rule.confidenceNote).toMatch(/^(Sure|Likely|Worth asking)/);
+});
+
+test.each(descriptions)("$id says what its source says and when a person checked it", (rule) => {
+  expect(rule.sourceSays.length).toBeGreaterThan(40);
+  expect(rule.checkedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  expect(rule.sourceUrl).toMatch(/^https:\/\/[a-z.]+\.gov\//);
+  if (rule.sourceCheck !== "confirmed") expect(rule.confidenceNote).toMatch(/^Worth asking/);
+  if (rule.sourceCheck === "not_confirmed") expect(rule.sourceSays).toMatch(/^Source not verified/);
+});
+
+test("a rule without a confirmed source never says more than worth asking", () => {
+  const document = { ...sampleDocument, lines: [] };
+  for (const rule of descriptions) {
+    const sure: Rule = { id: rule.id, check: () => [{ documentId: document.id, lineIds: [], title: "t", atStakeCents: 100, confidence: "sure" }] };
+    const expected = rule.sourceCheck === "confirmed" ? "sure" : "worth_asking";
+    expect(runRules([document], [sure])[0].confidence, rule.id).toBe(expected);
+  }
+});
+
+test("content/rules/SOURCES.md lists every rule with its link", () => {
+  const page = readFileSync("content/rules/SOURCES.md", "utf8");
+  for (const rule of descriptions) {
+    expect(page, rule.id).toContain(`\`${rule.id}\``);
+    expect(page, rule.id).toContain(rule.sourceUrl);
+  }
 });
 
 test.each(descriptions)("$id is explained in at most three short sentences with the amount filled by code", (rule) => {
