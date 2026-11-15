@@ -11,7 +11,9 @@ export const DELIVERY_CODES = [...FULL_PACKAGE_CODES, "59409", "59410", "59514",
 export const PARTS_OF_ANY_DELIVERY = ["59050", "59051", "59300", "59414"];
 
 // Parts of a full package: delivery-only codes, care before the birth, care after the birth.
+// The CMS manual does not name the last three numbers (59425, 59426, 59430): unverified.
 export const PARTS_OF_FULL_PACKAGE = ["59409", "59410", "59514", "59515", "59612", "59614", "59620", "59622", "59425", "59426", "59430"];
 
-// Anesthesia for labor is also reported once for one birth.
+// Anesthesia for labor. Not named in the CMS chapter above: this number is unverified,
+// which is one reason the once-per-birth rule only says "worth asking".
 export const ONCE_PER_BIRTH_CODES = [...DELIVERY_CODES, "01967"];

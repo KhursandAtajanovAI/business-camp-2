@@ -12,7 +12,8 @@ test("finds delivery of the placenta and postpartum care billed next to the full
   ]);
   expect(findings.map((finding) => [finding.lineIds[0], finding.atStakeCents])).toEqual([["b", 38_000], ["c", 24_000]]);
   expect(findings[0].title).toBe('"Delivery of placenta" (59414) is usually part of the birth package (59510)');
-  expect(findings.every((finding) => finding.confidence === "likely")).toBe(true);
+  // The CMS manual names 59414 as part of a delivery; it does not name 59430, so that one only asks.
+  expect(findings.map((finding) => finding.confidence)).toEqual(["likely", "worth_asking"]);
 });
 
 test("finds a package part that the same practice put on a second bill", () => {

@@ -21,6 +21,8 @@ export function runRules(documents: ParsedDocument[], rules: Rule[] = allRules):
     const description = ruleDescriptions[finding.ruleId];
     return {
       ...finding,
+      // A rule whose official source does not confirm it may only ask, never assert.
+      confidence: description?.sourceCheck === "confirmed" ? finding.confidence : "worth_asking",
       id: `finding-${key}-${number}`,
       sourceNote: description ? `${description.sourceName} (${description.sourceUrl})` : "",
     };

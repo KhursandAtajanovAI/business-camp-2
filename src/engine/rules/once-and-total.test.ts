@@ -8,7 +8,7 @@ const line = (id: string, code: string, amountCents: number, quantity = 1) => ({
 const doc = (extra: Partial<ParsedDocument>): ParsedDocument => ({ ...sampleDocument, ...extra });
 
 test("finds a birth package billed twice for one birth", () => {
-  expect(oncePerBirth.check([doc({ lines: [line("o1", "59400", 960_000, 2)] })])).toMatchObject([{ lineIds: ["o1"], atStakeCents: 480_000, confidence: "likely" }]);
+  expect(oncePerBirth.check([doc({ lines: [line("o1", "59400", 960_000, 2)] })])).toMatchObject([{ lineIds: ["o1"], atStakeCents: 480_000, confidence: "worth_asking" }]);
 });
 
 test("stays silent for quantity one and for services that repeat normally", () => {
@@ -18,6 +18,13 @@ test("stays silent for quantity one and for services that repeat normally", () =
 test("finds a total that is higher than the sum of the lines", () => {
   const findings = totalMismatch.check([doc({ lines: [line("t1", "0120", 100_000)], totalCents: 125_000 })]);
   expect(findings).toEqual([{ documentId: "doc-sample-1", lineIds: [], title: "The lines add up to $1,000.00, but the bill says the total is $1,250.00", atStakeCents: 25_000, confidence: "sure" }]);
+});
+
+test("is less sure about the total when part of the paper was hard to read", () => {
+  const notes = ["The lines add up to $1,000.00, but the paper says the total is $1,250.00.", 'We could not read this line, please check it: "Pharm $4?.00"'];
+  const base = { lines: [line("t1", "0120", 100_000)], totalCents: 125_000 };
+  expect(totalMismatch.check([doc({ ...base, needsReview: notes })])[0].confidence).toBe("worth_asking");
+  expect(totalMismatch.check([doc({ ...base, needsReview: notes.slice(0, 1) })])[0].confidence).toBe("sure");
 });
 
 test("stays silent when the lines add up", () => {

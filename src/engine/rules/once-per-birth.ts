@@ -3,6 +3,7 @@ import { isBill, type Rule, type RuleFinding } from "./rule";
 
 // Finds a once-per-birth service billed with a quantity above one.
 // The money in question is the price of the extra units.
+// No official text we could read sets this limit, so the rule only asks (see content/rules).
 export const oncePerBirth: Rule = {
   id: "once-per-birth",
   check(documents) {
@@ -15,7 +16,7 @@ export const oncePerBirth: Rule = {
           lineIds: [line.id],
           title: `"${line.description}" (${line.code}) is billed ${line.quantity} times for one birth`,
           atStakeCents: Math.round((line.amountCents * (line.quantity - 1)) / line.quantity),
-          confidence: "likely",
+          confidence: "worth_asking",
         });
       }
     }
