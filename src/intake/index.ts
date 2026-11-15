@@ -4,6 +4,7 @@ import { parseText, type ParseOptions } from "./parse/parse-text";
 import { readPastedText } from "./upload/read-pasted-text";
 import { readUpload } from "./upload/read-upload";
 
+export { centsFromInput, editLine, removeLine, type LineChange } from "./parse/edit-lines";
 export { redactPersonalData } from "./redact/redact";
 export { ACCEPTED_FILE_TYPES, MAX_FILE_BYTES } from "./upload/check-file";
 export { IntakeError } from "./upload/messages";
