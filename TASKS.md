@@ -82,3 +82,10 @@ Stages: 0 skeleton, 1 core, 2 full path (all P0), 3 retention (P1), 4 growth (P2
 | D18 | Empty states and problems in plain words, calm offline note | Dias | ready |
 | D23 | Screenshots retaken from the live site | Dias | waits for H23 |
 
+
+## Stage 6: before the pitch
+
+| ID | Package | Who | Status |
+|----|---------|-----|--------|
+| D19 | Pricing page: free check, Start, and Family and Pause as the plan for later | Dias | ready |
+| D20 | First screen understood in ten seconds | Dias | ready |
