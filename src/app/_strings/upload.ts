@@ -27,6 +27,7 @@ export const upload = {
   checkNote: "We look for things worth asking about and show them in plain words. It is free.",
   addAnother: "Add another paper",
   remove: "Remove",
+  correct: "See and correct the lines we read",
   unknownProvider: "Provider not found on the paper",
   gentleTitle: "That did not work this time",
   gentleText: "Something got in the way while we were reading the paper.",

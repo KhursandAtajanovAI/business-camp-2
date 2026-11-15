@@ -5,6 +5,7 @@ import { WithHints } from "@/components/hint/with-hints";
 import { countOf, formatMoney } from "../_format/format";
 import { common } from "../_strings/common";
 import { results } from "../_strings/results";
+import { CheckBadge } from "./check-badge";
 import { HealthNote } from "./health-note";
 
 // The first thing a parent sees: how many things are worth asking about and the money in question.
@@ -25,6 +26,7 @@ export function SummaryCard({ analysis }: { analysis: Analysis }) {
         <p><WithHints text={results.calmText} /></p>
       )}
       <HealthNote score={analysis.healthScore} />
+      <CheckBadge who="rules" />
       <p className="text-ink-soft">{results.papersRead(countOf(analysis.documents.length, common.papers))}</p>
     </Card>
   );

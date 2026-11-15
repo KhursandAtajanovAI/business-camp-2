@@ -33,6 +33,13 @@ describe("every screen keeps its promises", () => {
     }
   });
 
+  it("speaks to a parent, not to a programmer: no technical words on screen", () => {
+    const technical = /\b(null|undefined|NaN|exception|stack trace|timeout|timed out|invalid|failed|failure|fatal|bad request|HTTP|JSON|localStorage|server|API|404|500|bug|crash(ed)?|unexpected)\b/;
+    for (const path of code.filter((file) => /_strings|content[\\/]lessons/.test(file))) {
+      expect(visible(read(path)), path).not.toMatch(technical);
+    }
+  });
+
   it("never promises money back and never gives medical or legal advice", () => {
     for (const path of code) {
       const words = visible(read(path));

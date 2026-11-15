@@ -10,6 +10,7 @@ import { WithHints } from "@/components/hint/with-hints";
 import { NextStep } from "@/components/layout/next-step";
 import { Waiting } from "@/components/states/quiet-state";
 import { addPaper, checkPapers, readPaper } from "../_pipeline/check-papers";
+import { correctLine } from "../_pipeline/edit-line";
 import { writeStored } from "../_session/storage";
 import { useStored } from "../_session/use-stored";
 import { upload } from "../_strings/upload";
@@ -77,7 +78,7 @@ export function UploadScreen() {
       {shown === "paste" && <PasteStep onText={read} onBack={() => setStep("choose")} />}
       {shown === "read" && (
         <>
-          {list.map((paper) => <PaperCard key={paper.id} paper={paper} onRemove={() => remove(paper.id)} />)}
+          {list.map((paper) => <PaperCard key={paper.id} paper={paper} onRemove={() => remove(paper.id)} onEdit={(lineId, edit) => papers.save(correctLine(list, paper.id, lineId, edit))} />)}
           <NextStep note={upload.checkNote}>
             <Button onClick={check}>{upload.check}</Button>
             <Button tone="second" onClick={() => setStep("choose")}>{upload.addAnother}</Button>

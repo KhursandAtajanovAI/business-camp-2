@@ -6,13 +6,14 @@ import { formatMoney, paperName } from "../_format/format";
 import { confidenceNames } from "../_strings/papers";
 import { results } from "../_strings/results";
 
-type FindingCardProps = { finding: Finding; paper?: ParsedDocument; chosen: boolean; onToggle: () => void };
+// "explanation" is the live wording for this bill; until it arrives the rule's own words are shown.
+type FindingCardProps = { finding: Finding; paper?: ParsedDocument; explanation?: string; chosen: boolean; onToggle: () => void };
 
 // One soft card per finding: what we noticed, the amount, how sure we are, and why.
 // Amber and calm words only. The tick decides whether it goes into the letter.
-export function FindingCard({ finding, paper, chosen, onToggle }: FindingCardProps) {
+export function FindingCard({ finding, paper, explanation: live, chosen, onToggle }: FindingCardProps) {
   const lines = paper?.lines.filter((line) => finding.lineIds.includes(line.id)) ?? [];
-  const explanation = explainFinding(finding);
+  const explanation = live ?? explainFinding(finding);
   return (
     <Card tone="notice" className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-2">

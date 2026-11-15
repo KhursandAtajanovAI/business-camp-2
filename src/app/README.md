@@ -20,7 +20,7 @@ Folders that start with an underscore are helpers, not pages:
 `_strings` (all words), `_session` (progress saved in the browser),
 `_pipeline` (the road from a paper to a result), `_format` (money and dates).
 
-`not-found.tsx`, `error.tsx` and `loading.tsx` are the kind "nothing here", "did not work" and "one moment" states.
+`not-found.tsx`, `error.tsx`, `global-error.tsx` and `loading.tsx` are the kind "nothing here", "did not work" and "one moment" states.
 
 Other modules are used only through their main file: `@/intake`, `@/engine`, `@/explain`,
 `@/letters`, `@/payments`, `@/case-file`. The sample comes from `@content/demo-documents`.

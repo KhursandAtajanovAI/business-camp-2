@@ -76,7 +76,16 @@ Stages: 0 skeleton, 1 core, 2 full path (all P0), 3 retention (P1), 4 growth (P2
 | H18 | Live model on the person's own bill (`src/model-review`, `/api/review`) | Khursand | merged |
 | H19 | Editing bill lines, data side (`src/intake`) | Khursand | merged; the screen is D16 |
 | H24 | Deck, package list, README, roadmap match the product | Khursand | merged |
-| D16 | Editable bill lines on the upload screen | Dias | not started |
-| D17 | "Explained by the model / locally" badge on the results screen | Dias | not started |
+| D15 | Results screen fits a 360 px phone; one pinned button, 11% of the screen | Dias | ready |
+| D16 | Editable bill lines on the upload and results screens | Dias | ready |
+| D17 | "Explained by the model / locally" badge on the results screen | Dias | ready |
+| D18 | Empty states and problems in plain words, calm offline note | Dias | ready |
 | D23 | Screenshots retaken from the live site | Dias | waits for H23 |
 
+
+## Stage 6: before the pitch
+
+| ID | Package | Who | Status |
+|----|---------|-----|--------|
+| D19 | Pricing page: free check, Start, and Family and Pause as the plan for later | Dias | ready |
+| D20 | First screen understood in ten seconds | Dias | ready |

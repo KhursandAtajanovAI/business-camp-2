@@ -1,6 +1,7 @@
 export const home = {
   title: "You just had a baby. Your bills shouldn't be another thing to worry about.",
-  lead: "Add a birth bill and in a couple of minutes we show you what is worth asking the billing office about. The check is free.",
+  lead: "Add a birth bill. We show what is worth asking the billing office about, and prepare a letter you can send.",
+  quickFacts: ["Free check", "No account", "About 2 minutes"],
   trySample: "Try it on an example",
   trySampleWorking: "Reading the example",
   trySampleNote: "We open a made-up bill and check it the same way we would check yours.",
